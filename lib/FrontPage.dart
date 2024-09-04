@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawkeye/FontPageRatingModel.dart';
+import 'package:hawkeye/Helpers/hive_Helper.dart';
+import 'package:hawkeye/Login/Auth.dart';
 import 'package:hawkeye/Login/Widgets.dart';
 import 'package:hawkeye/Login/loginScreen.dart';
 import 'package:hawkeye/Splash/animatedSplachScreen.dart';
@@ -46,7 +49,15 @@ class _FrontPageState extends State<FrontPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: buildAppBar( ),
+     appBar: buildAppBar(action:[ IconButton(
+       icon: const Icon(Icons.logout, color: Color(0xff200E32)),
+       onPressed: (){
+
+         setState(() {
+           HiveHelper.setToken("");
+         });
+         Get.offAll(AuthScreen());},
+     ),]),
       
       body: Container(
         decoration: const BoxDecoration(

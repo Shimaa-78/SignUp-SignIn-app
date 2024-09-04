@@ -7,6 +7,8 @@ import 'package:hawkeye/Helpers/hive_Helper.dart';
 import 'package:hawkeye/Login/loginScreen.dart';
 import 'package:hawkeye/ONboarding/onboardingScreen.dart';
 
+import '../Login/Auth.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -44,20 +46,19 @@ class _SplashScreenState extends State<SplashScreen> {
       time.cancel();
       if (!(HiveHelper.CheckFirstVisit())) {
         print((HiveHelper.CheckFirstVisit()));
-        if (HiveHelper.getToken() != null) {
-          print(HiveHelper.getToken());
+        String? token = HiveHelper.getToken();
+
+        // Check if the token is null or empty
+        if (token != null && token.isNotEmpty) {
           Get.offAll(FrontPage());
         } else {
-          Get.offAll(LoginScreen());
+          Get.offAll(AuthScreen());
         }
       } else {
         Get.offAll(OnBoardinScreen());
       }
-
-
-
-    
     });
+
   }
 
   @override

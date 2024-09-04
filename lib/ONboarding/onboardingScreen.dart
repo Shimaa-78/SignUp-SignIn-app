@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:hawkeye/FrontPage.dart';
 import 'package:hawkeye/Helpers/hive_Helper.dart';
 import 'package:hawkeye/Login/loginScreen.dart';
 import 'onboardingModel.dart';
+import '../Login/Auth.dart';
 
 class OnBoardinScreen extends StatefulWidget {
   const OnBoardinScreen({super.key});
@@ -31,12 +34,8 @@ class _OnBoardinScreenState extends State<OnBoardinScreen> {
   }
 
   void _navigateToLogin() {
-    // Get.offAll(FrontPage());
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
-      (Route<dynamic> route) => false,
-    );
+     Get.to(AuthScreen());
+
   }
 
   @override

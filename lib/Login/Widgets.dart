@@ -5,14 +5,10 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:hawkeye/Login/SignUpScreen.dart';
 import 'package:hawkeye/Login/loginScreen.dart'; // Import required for SystemNavigator.pop()
 
-AppBar buildAppBar({List<Widget>? action}) {
+AppBar buildAppBar( {List<Widget>? action}) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
-    leading: IconButton(
-      icon: const Icon(Icons.arrow_back, color: Color(0xff200E32)),
-      onPressed: () => SystemNavigator.pop(),
-    ),
      actions:action,
   
   );
